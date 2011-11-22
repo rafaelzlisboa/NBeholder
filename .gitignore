@@ -1,0 +1,18 @@
+# files
+*.com
+*.class
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.cache
+*.suo
+
+# folders
+bin/
+obj/
+TestResults/
+
+# resharper
+/_ReSharper.*
+*.ReSharper.*
