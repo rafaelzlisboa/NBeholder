@@ -7,6 +7,7 @@
 *.dll.config
 *.cache
 *.suo
+*.user
 
 # folders
 bin/
