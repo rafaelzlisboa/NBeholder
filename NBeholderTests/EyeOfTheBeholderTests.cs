@@ -8,8 +8,6 @@ using NUnit.Framework;
 
 namespace NBeholderTests
 {
-    
-
     [TestFixture]
     public class EyeOfTheBeholderTests
     {
