@@ -13,10 +13,17 @@ namespace NBeholderTests
     [TestFixture]
     public class EyeOfTheBeholderTests
     {
+        private EyeOfTheBeholder eye;
+
+        [SetUp]
+        public void Setup()
+        {
+            eye = new EyeOfTheBeholder();    
+        }
+
         [Test]
         public void EyeOfTheBeholder_ReturnsCorrectDataStructure()
         {
-            EyeOfTheBeholder eye = new EyeOfTheBeholder();
             var runningAssemblies = eye.RunningAssemblies();
             Assert.IsInstanceOf(typeof(IList<IDictionary<string, string>>), runningAssemblies);
         }
@@ -24,7 +31,6 @@ namespace NBeholderTests
         [Test]
         public void EyeOfTheBeholder_ShouldFindSystemDLL()
         {
-            EyeOfTheBeholder eye = new EyeOfTheBeholder();
             var runningAssemblies = eye.RunningAssemblies();
             Assert.True(runningAssemblies.Any(x => x["AssemblyName"] == "System"));
         }
@@ -32,7 +38,6 @@ namespace NBeholderTests
         [Test]
         public void EyeOfTheBeholder_ShouldFindNBeholderDLL()
         {
-            EyeOfTheBeholder eye = new EyeOfTheBeholder();
             var runningAssemblies = eye.RunningAssemblies();
             Assert.True(runningAssemblies.Any(x => x["AssemblyName"] == "NBeholder"));
         }
@@ -40,7 +45,6 @@ namespace NBeholderTests
         [Test]
         public void EyeOfTheBeholder_GenerateXml_ShouldReadGeneratedXML()
         {
-            EyeOfTheBeholder eye = new EyeOfTheBeholder();
             XDocument eyeXml = XDocument.Parse(eye.RunningAssembliesAsXml());
 
             var queryResult =
@@ -53,7 +57,6 @@ namespace NBeholderTests
         public void EyeOfTheBeholder_ShouldFindSystemDataDll()
         {
             Assembly.Load("System.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089");
-            EyeOfTheBeholder eye = new EyeOfTheBeholder();
             var runningAssemblies = eye.RunningAssemblies();
             Assert.True(runningAssemblies.Any(x => x["AssemblyName"].Equals("System.Data")));
         }
